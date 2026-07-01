@@ -3,218 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionário - Conflito com Cliente</title>
+    <title>Questionário - Gestão de Conflitos (Wesley)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
-        body {
-            background-color: #f0ebf8;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .form-container {
-            max-width: 640px;
-            width: 100%;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        }
-
-        .header-card {
-            border-top: 10px solid #673ab7;
-        }
-
-        .header-title {
-            font-size: 24pt;
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #202124;
-        }
-
-        .header-desc {
-            font-size: 11pt;
-            color: #5f6368;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .creator-badge {
-            display: inline-block;
-            background-color: #e8eaed;
-            color: #202124;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 10pt;
-            font-weight: 500;
-        }
-
-        .question-title {
-            font-size: 12pt;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 16px;
-        }
-
-        .option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            cursor: pointer;
-        }
-
-        .option input[type="radio"] {
-            margin-right: 12px;
-            transform: scale(1.2);
-            accent-color: #673ab7;
-            cursor: pointer;
-        }
-
-        .option label {
-            font-size: 11pt;
-            color: #202124;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .btn-submit {
-            background-color: #673ab7;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            font-size: 11pt;
-            font-weight: 500;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-submit:hover {
-            background-color: #5e35b1;
-        }
-        
-        .footer {
-            text-align: center;
-            font-size: 9pt;
-            color: #5f6368;
-            margin-top: 20px;
-        }
+        * { box-sizing: border-box; }
+        body { background-color: #f0ebf8; font-family: 'Roboto', sans-serif; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .form-container { max-width: 680px; width: 100%; }
+        .card { background-color: white; border-radius: 8px; padding: 24px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+        .header-card { border-top: 10px solid #673ab7; }
+        .header-title { font-size: 24pt; margin-top: 0; margin-bottom: 10px; color: #202124; }
+        .header-desc { font-size: 11pt; color: #5f6368; margin-bottom: 20px; line-height: 1.5; }
+        .creator-badge { display: inline-block; background-color: #e8eaed; color: #202124; padding: 6px 12px; border-radius: 4px; font-size: 10pt; font-weight: 500; }
+        .question-title { font-size: 12pt; font-weight: 500; color: #202124; margin-bottom: 16px; }
+        .input-field { width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px; font-size: 11pt; margin-bottom: 10px; outline: none; }
+        .input-field:focus { border-bottom: 2px solid #673ab7; }
+        .option { display: flex; align-items: center; margin-bottom: 12px; cursor: pointer; }
+        .option input[type="radio"] { margin-right: 12px; transform: scale(1.2); accent-color: #673ab7; cursor: pointer; }
+        .option label { font-size: 11pt; color: #202124; cursor: pointer; width: 100%; }
+        .btn-submit { background-color: #673ab7; color: white; border: none; padding: 12px 30px; font-size: 11pt; font-weight: 500; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+        .btn-submit:hover { background-color: #5e35b1; }
+        .footer { text-align: center; font-size: 9pt; color: #5f6368; margin-top: 20px; }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        
         <div class="card header-card">
             <h1 class="header-title">Atendimento e Resolução de Conflitos</h1>
             <p class="header-desc">
-                Cenário base: Um cliente se irritou com o tempo de espera na fila do caixa e começou a discutir com um funcionário que estava sozinho operando duas funções. O cliente elevou o tom e outros na fila começaram a reclamar também.<br><br>
-                Responda às 10 questões abaixo de acordo com as melhores práticas de atendimento ao cliente.
+                <strong>Cenário:</strong> Um cliente se irritou com o tempo de espera na fila do caixa e começou a discutir com um funcionário que estava sozinho operando duas funções. O cliente elevou o tom e outros na fila começaram a reclamar também.
             </p>
             <div class="creator-badge">Criado por Wesley ✨</div>
         </div>
 
-        <form action="#" method="get">
+        <form id="quizForm">
+            <div class="card">
+                <div class="question-title">Identificação do Participante</div>
+                <input type="text" id="nome" class="input-field" placeholder="Seu Nome Completo" required><br><br>
+                <input type="number" id="idade" class="input-field" placeholder="Sua Idade" required><br><br>
+                <label class="question-title" style="font-size:11pt; display:block; margin-bottom:8px;">Sexo:</label>
+                <div class="option"><input type="radio" name="sexo" value="Masculino" id="sm" required><label for="sm">Masculino</label></div>
+                <div class="option"><input type="radio" name="sexo" value="Feminino" id="sf"><label for="sf">Feminino</label></div>
+                <div class="option"><input type="radio" name="sexo" value="Outro" id="so"><label for="so">Outro</label></div>
+            </div>
 
             <div class="card">
                 <div class="question-title">1. Qual foi o principal gatilho para a irritação inicial do cliente?</div>
-                <div class="option"><input type="radio" name="q1" id="q1a"><label for="q1a">A) O mau atendimento do funcionário.</label></div>
-                <div class="option"><input type="radio" name="q1" id="q1b"><label for="q1b">B) O preço incorreto dos produtos.</label></div>
-                <div class="option"><input type="radio" name="q1" id="q1c"><label for="q1c">C) O tempo de espera na fila do caixa.</label></div>
-                <div class="option"><input type="radio" name="q1" id="q1d"><label for="q1d">D) A falta de produtos na prateleira.</label></div>
+                <div class="option"><input type="radio" name="q1" value="A" id="q1a" required><label for="q1a">A) O mau atendimento do funcionário.</label></div>
+                <div class="option"><input type="radio" name="q1" value="B" id="q1b"><label for="q1b">B) O preço incorreto dos produtos.</label></div>
+                <div class="option"><input type="radio" name="q1" value="C" id="q1c"><label for="q1c">C) O tempo de espera na fila do caixa.</label></div>
+                <div class="option"><input type="radio" name="q1" value="D" id="q1d"><label for="q1d">D) A falta de produtos na prateleira.</label></div>
             </div>
 
             <div class="card">
                 <div class="question-title">2. Qual fator operacional agravou diretamente a situação no caixa?</div>
-                <div class="option"><input type="radio" name="q2" id="q2a"><label for="q2a">A) O sistema de pagamentos estava fora do ar.</label></div>
-                <div class="option"><input type="radio" name="q2" id="q2b"><label for="q2b">B) O funcionário estava operando sozinho em duas funções.</label></div>
-                <div class="option"><input type="radio" name="q2" id="q2c"><label for="q2c">C) O ar-condicionado da loja estava quebrado.</label></div>
-                <div class="option"><input type="radio" name="q2" id="q2d"><label for="q2d">D) O cliente esqueceu a carteira.</label></div>
+                <div class="option"><input type="radio" name="q2" value="A" id="q2a" required><label for="q2a">A) O sistema de pagamentos fora do ar.</label></div>
+                <div class="option"><input type="radio" name="q2" value="B" id="q2b"><label for="q2b">B) O funcionário operar sozinho em duas funções.</label></div>
+                <div class="option"><input type="radio" name="q2" value="C" id="q2c"><label for="q2c">C) O ar-condicionado quebrado.</label></div>
+                <div class="option"><input type="radio" name="q2" value="D" id="q2d"><label for="q2d">D) O cliente esquecer a carteira.</label></div>
             </div>
 
             <div class="card">
                 <div class="question-title">3. Qual foi a atitude imediata do cliente ao perder a paciência?</div>
-                <div class="option"><input type="radio" name="q3" id="q3a"><label for="q3a">A) Solicitou a presença do gerente de forma calma e educada.</label></div>
-                <div class="option"><input type="radio" name="q3" id="q3b"><label for="q3b">B) Abandonou os produtos e saiu da loja em silêncio.</label></div>
-                <div class="option"><input type="radio" name="q3" id="q3c"><label for="q3c">C) Elevou o tom de voz e começou a discutir com o funcionário.</label></div>
-                <div class="option"><input type="radio" name="q3" id="q3d"><label for="q3d">D) Ofereceu ajuda ao funcionário para empacotar as compras.</label></div>
+                <div class="option"><input type="radio" name="q3" value="A" id="q3a" required><label for="q3a">A) Solicitou o gerente educadamente.</label></div>
+                <div class="option"><input type="radio" name="q3" value="B" id="q3b"><label for="q3b">B) Abandonou as compras em silêncio.</label></div>
+                <div class="option"><input type="radio" name="q3" value="C" id="q3c"><label for="q3c">C) Elevou o tom e começou a discutir com o funcionário.</label></div>
+                <div class="option"><input type="radio" name="q3" value="D" id="q3d"><label for="q3d">D) Ajudou a empacotar os produtos.</label></div>
             </div>
 
             <div class="card">
                 <div class="question-title">4. Como a atitude do cliente irritado afetou os demais clientes presentes?</div>
-                <div class="option"><input type="radio" name="q4" id="q4a"><label for="q4a">A) Ninguém prestou atenção e a fila continuou tranquila.</label></div>
-                <div class="option"><input type="radio" name="q4" id="q4b"><label for="q4b">B) Causou um efeito cascata, e os outros também começaram a reclamar.</label></div>
-                <div class="option"><input type="radio" name="q4" id="q4c"><label for="q4c">C) Os outros clientes repreenderam o cliente impaciente.</label></div>
-                <div class="option"><input type="radio" name="q4" id="q4d"><label for="q4d">D) Todos decidiram ir embora da loja imediatamente.</label></div>
+                <div class="option"><input type="radio" name="q4" value="A" id="q4a" required><label for="q4a">A) Ninguém prestou atenção.</label></div>
+                <div class="option"><input type="radio" name="q4" value="B" id="q4b"><label for="q4b">B) Gerou efeito cascata e os outros começaram a reclamar.</label></div>
+                <div class="option"><input type="radio" name="q4" value="C" id="q4c"><label for="q4c">C) Os outros defenderam o funcionário.</label></div>
+                <div class="option"><input type="radio" name="q4" value="D" id="q4d"><label for="q4d">D) Todos foram embora da loja.</label></div>
             </div>
 
             <div class="card">
                 <div class="question-title">5. Qual é a atitude mais adequada para o funcionário adotar no exato momento da discussão?</div>
-                <div class="option"><input type="radio" name="q5" id="q5a"><label for="q5a">A) Discutir no mesmo tom para mostrar que não está errado.</label></div>
-                <div class="option"><input type="radio" name="q5" id="q5b"><label for="q5b">B) Ignorar completamente o cliente e atender o próximo.</label></div>
-                <div class="option"><input type="radio" name="q5" id="q5c"><label for="q5c">C) Manter a calma, ter empatia, pedir desculpas pela demora e focar em agilizar o atendimento.</label></div>
-                <div class="option"><input type="radio" name="q5" id="q5d"><label for="q5d">D) Fechar o caixa e ir para o intervalo.</label></div>
+                <div class="option"><input type="radio" name="q5" value="A" id="q5a" required><label for="q5a">A) Discutir no mesmo tom.</label></div>
+                <div class="option"><input type="radio" name="q5" value="B" id="q5b"><label for="q5b">B) Ignorar completamente o cliente.</label></div>
+                <div class="option"><input type="radio" name="q5" value="C" id="q5c"><label for="q5c">C) Manter a calma, empatia e focar em agilizar o atendimento.</label></div>
+                <div class="option"><input type="radio" name="q5" value="D" id="q5d"><label for="q5d">D) Fechar o caixa e sair.</label></div>
             </div>
 
             <div class="card">
-                <div class="question-title">6. O que a gerência ou liderança da loja deveria ter feito para prevenir esse cenário?</div>
-                <div class="option"><input type="radio" name="q6" id="q6a"><label for="q6a">A) Proibir os clientes de falarem na fila.</label></div>
-                <div class="option"><input type="radio" name="q6" id="q6b"><label for="q6b">B) Realizar um dimensionamento adequado da equipe para evitar que um funcionário acumule funções.</label></div>
-                <div class="option"><input type="radio" name="q6" id="q6c"><label for="q6c">C) Colocar avisos dizendo que a loja não se responsabiliza por demoras.</label></div>
-                <div class="option"><input type="radio" name="q6" id="q6d"><label for="q6d">D) Punir o funcionário por ser lento.</label></div>
+                <div class="question-title">6. O que a gerência deveria ter feito para prevenir esse cenário?</div>
+                <div class="option"><input type="radio" name="q6" value="A" id="q6a" required><label for="q6a">A) Proibir os clientes de falar na fila.</label></div>
+                <div class="option"><input type="radio" name="q6" value="B" id="q6b"><label for="q6b">B) Fazer um dimensionamento adequado da equipe nas horas de pico.</label></div>
+                <div class="option"><input type="radio" name="q6" value="C" id="q6c"><label for="q6c">C) Isentar-se de responsabilidades por demoras.</label></div>
+                <div class="option"><input type="radio" name="q6" value="D" id="q6d"><label for="q6d">D) Punir o funcionário por ser lento.</label></div>
             </div>
 
             <div class="card">
                 <div class="question-title">7. Qual habilidade comportamental (Soft Skill) é mais exigida do funcionário nesta situação?</div>
-                <div class="option"><input type="radio" name="q7" id="q7a"><label for="q7a">A) Fluência em outros idiomas.</label></div>
-                <div class="option"><input type="radio" name="q7" id="q7b"><label for="q7b">B) Conhecimentos avançados em informática.</label></div>
-                <div class="option"><input type="radio" name="q7" id="q7c"><label for="q7c">C) Inteligência emocional e resiliência.</label></div>
-                <div class="option"><input type="radio" name="q7" id="q7d"><label for="q7d">D) Habilidade de negociação de vendas.</label></div>
+                <div class="option"><input type="radio" name="q7" value="A" id="q7a" required><label for="q7a">A) Fluência em outros idiomas.</label></div>
+                <div class="option"><input type="radio" name="q7" value="B" id="q7b"><label for="q7b">B) Conhecimentos de informática.</label></div>
+                <div class="option"><input type="radio" name="q7" value="C" id="q7c"><label for="q7c">C) Inteligência emocional e resiliência.</label></div>
+                <div class="option"><input type="radio" name="q7" value="D" id="q7d"><label for="q7d">D) Técnicas agressivas de vendas.</label></div>
             </div>
 
             <div class="card">
                 <div class="question-title">8. Se um supervisor chegar ao local durante a discussão, qual deve ser sua primeira ação?</div>
-                <div class="option"><input type="radio" name="q8" id="q8a"><label for="q8a">A) Acalmar os ânimos, assumir uma das funções para agilizar a fila e ouvir o cliente.</label></div>
-                <div class="option"><input type="radio" name="q8" id="q8b"><label for="q8b">B) Dar uma bronca no funcionário na frente de todos os clientes.</label></div>
-                <div class="option"><input type="radio" name="q8" id="q8c"><label for="q8c">C) Expulsar o cliente da loja acionando a segurança imediatamente.</label></div>
-                <div class="option"><input type="radio" name="q8" id="q8d"><label for="q8d">D) Fechar a loja para balanço.</label></div>
+                <div class="option"><input type="radio" name="q8" value="A" id="q8a" required><label for="q8a">A) Acalmar os ânimos, apoiar a operação e ouvir o cliente.</label></div>
+                <div class="option"><input type="radio" name="q8" value="B" id="q8b"><label for="q8b">B) Repreender o funcionário publicamente.</label></div>
+                <div class="option"><input type="radio" name="q8" value="C" id="q8c"><label for="q8c">C) Chamar a segurança para expulsar o cliente.</label></div>
+                <div class="option"><input type="radio" name="q8" value="D" id="q8d"><label for="q8d">D) Ignorar e ir para o escritório.</label></div>
             </div>
 
             <div class="card">
-                <div class="question-title">9. O que o funcionário NUNCA deve dizer a um cliente que está elevando o tom de voz?</div>
-                <div class="option"><input type="radio" name="q9" id="q9a"><label for="q9a">A) "Peço desculpas pela demora, estou fazendo o meu melhor."</label></div>
-                <div class="option"><input type="radio" name="q9" id="q9b"><label for="q9b">B) "O senhor precisa se acalmar, a culpa não é minha se a loja está cheia."</label></div>
-                <div class="option"><input type="radio" name="q9" id="q9c"><label for="q9c">C) "Entendo sua frustração, já vou finalizar o seu atendimento."</label></div>
-                <div class="option"><input type="radio" name="q9" id="q9d"><label for="q9d">D) "Vou chamar o meu supervisor para nos auxiliar agora mesmo."</label></div>
+                <div class="question-title">9. O que o funcionário NUNCA deve dizer a um cliente irritado?</div>
+                <div class="option"><input type="radio" name="q9" value="A" id="q9a" required><label for="q9a">A) "Peço desculpa, estou fazendo o meu melhor."</label></div>
+                <div class="option"><input type="radio" name="q9" value="B" id="q9b"><label for="q9b">B) "Acalme-se, a culpa não é minha se isso aqui está cheio!"</label></div>
+                <div class="option"><input type="radio" name="q9" value="C" id="q9c"><label for="q9c">C) "Compreendo a sua frustração."</label></div>
+                <div class="option"><input type="radio" name="q9" value="D" id="q9d"><label for="q9d">D) "Vou solicitar suporte agora mesmo."</label></div>
             </div>
 
             <div class="card">
-                <div class="question-title">10. Qual é o principal risco para a empresa se situações como essa se tornarem rotineiras?</div>
-                <div class="option"><input type="radio" name="q10" id="q10a"><label for="q10a">A) Aumento da produtividade dos funcionários sob pressão.</label></div>
-                <div class="option"><input type="radio" name="q10" id="q10b"><label for="q10b">B) Perda de clientes, avaliações negativas e danos à reputação do negócio.</label></div>
-                <div class="option"><input type="radio" name="q10" id="q10c"><label for="q10c">C) Fidelização dos clientes que gostam de confusão.</label></div>
-                <div class="option"><input type="radio" name="q10" id="q10d"><label for="q10d">D) Redução nos custos operacionais da loja.</label></div>
+                <div class="question-title">10. Qual é o principal risco a longo prazo para a empresa se isto for recorrente?</div>
+                <div class="option"><input type="radio" name="q10" value="A" id="q10a" required><label for="q10a">A) Aumento da produtividade sob pressão.</label></div>
+                <div class="option"><input type="radio" name="q10" value="B" id="q10b"><label for="q10b">B) Perda de clientes e danos graves à reputação.</label></div>
+                <div class="option"><input type="radio" name="q10" value="C" id="q10c"><label for="q10c">C) Clientes mais satisfeitos com a agitação.</label></div>
+                <div class="option"><input type="radio" name="q10" value="D" id="q10d"><label for="q10d">D) Redução de custos de pessoal.</label></div>
+            </div>
+
+            <div class="card">
+                <div class="question-title">Proposta de Solução Comercial</div>
+                <label for="solucao" style="font-size: 10.5pt; color: #5f6368; display: block; margin-bottom: 10px;">
+                    Na sua opinião, qual seria a melhor estratégia prática ou organizacional para solucionar e evitar este tipo de problema na empresa?
+                </label>
+                <textarea id="solucao" class="input-field" rows="4" placeholder="Escreva aqui a sua solução..." style="resize: vertical;" required></textarea>
             </div>
 
             <div>
-                <button type="button" class="btn-submit" onclick="alert('Formulário enviado com sucesso, Wesley!')">Enviar Respostas</button>
+                <button type="submit" class="btn-submit">Submeter Respostas</button>
             </div>
-
         </form>
-        
-        <div class="footer">
-            Design de formulário criado por Wesley.
-        </div>
-
+        <div class="footer">Formulário Oficial de Estudo — Desenvolvido por Wesley.</div>
     </div>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBXo-eXi7olEymCfybBbLCIB8d0j6fhiJY",
+          authDomain: "app-web-a11a1.firebaseapp.com",
+          databaseURL: "https://app-web-a11a1-default-rtdb.firebaseio.com",
+          projectId: "app-web-a11a1",
+          storageBucket: "app-web-a11a1.firebasestorage.app",
+          messagingSenderId: "51376708078",
+          appId: "1:51376708078:web:735ba4419cf9be4dad16ff",
+          measurementId: "G-P0MBM36S9W"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        document.getElementById('quizForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const sexoSelecionado = document.querySelector('input[name="sexo"]:checked').value;
+            
+            const dadosResposta = {
+                nome: document.getElementById('nome').value,
+                idade: parseInt(document.getElementById('idade').value),
+                sexo: sexoSelecionado,
+                q1: document.querySelector('input[name="q1"]:checked').value,
+                q2: document.querySelector('input[name="q2"]:checked').value,
+                q3: document.querySelector('input[name="q3"]:checked').value,
+                q4: document.querySelector('input[name="q4"]:checked').value,
+                q5: document.querySelector('input[name="q5"]:checked').value,
+                q6: document.querySelector('input[name="q6"]:checked').value,
+                q7: document.querySelector('input[name="q7"]:checked').value,
+                q8: document.querySelector('input[name="q8"]:checked').value,
+                q9: document.querySelector('input[name="q9"]:checked').value,
+                q10: document.querySelector('input[name="q10"]:checked').value,
+                solucao: document.getElementById('solucao').value,
+                dataEnvio: new Date().toISOString()
+            };
+
+            try {
+                // Criando uma nova referência única na árvore 'respostas_quiz'
+                const listaRef = ref(db, 'respostas_quiz');
+                const novaRespostaRef = push(listaRef);
+                await set(novaRespostaRef, dadosResposta);
+                
+                alert("Muito obrigado! Suas respostas foram salvas com sucesso no Realtime Database do Wesley.");
+                document.getElementById('quizForm').reset();
+            } catch (error) {
+                console.error("Erro ao salvar:", error);
+                alert("Houve um erro ao submeter as respostas.");
+            }
+        });
+    </script>
 </body>
 </html>
